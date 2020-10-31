@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Discipline;
 
 
 class DisciplineController extends Controller
 {
     public function index()
     {
-        return ["disciplines" => []];
+        $disciplines = Discipline::all();
+        return view(
+            'disciplines.index',
+            compact('disciplines')
+        );
     }
 
     public function show($id)
