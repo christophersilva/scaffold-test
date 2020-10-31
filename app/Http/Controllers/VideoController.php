@@ -4,13 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Video;
 
 
 class VideoController extends Controller
 {
     public function index()
     {
-        return ["videos" => []];
+        $videos = Video::all();
+        return view(
+            'videos.index',
+            compact('videos')
+        );
     }
 
     public function show($id)
