@@ -34,6 +34,7 @@ class DisciplinesTableSeeder extends Seeder
 
         foreach($disciplines as $discipline) {
             Discipline::firstOrCreate($discipline);
+            sleep(1);
         }
     }
 }

@@ -17,12 +17,14 @@ class CreateVideosTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('link');
+            $table->string('summary');
             $table->unsignedBigInteger('discipline_id');
             $table->foreign('discipline_id')->references('id')->on('disciplines');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->integer('views');
+            $table->integer('views')->default(0);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
