@@ -1,28 +1,29 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Students') }}
-        </h2>
+        <div class="flex items-center justify-between">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ trans_choice('general.students', 2) }}
+            </h2>
+        </div>
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
                 @if ($students->count() > 0)
-                    <table>
+                    <table class="table-auto w-full">
                         <thead>
-                            <th>ID</th>
-                            <th>Nome</th>
-                            <th>E-mail</th>
-                            <th>Criado em</th>
+                            <th class="border w-1/4 px-4 py-2">ID</th>
+                            <th class="border w-1/4 px-4 py-2">Nome</th>
+                            <th class="border w-1/4 px-4 py-2">E-mail</th>
+                            <th class="border w-1/4 px-4 py-2">Criado em</th>
                         </thead>
                         <tbody>
                             @foreach ($students as $student)
                                 <tr>
-                                    <td>{{ $student->id }}</td>
-                                    <td>{{ $student->name }}</td>
-                                    <td>{{ $student->email }}</td>
-                                    <td>{{ strftime('%d/%m/%Y %T', strtotime($student->created_at)) }}</td>
+                                    <td class="border w-1/4 px-4 py-2">{{ $student->id }}</td>
+                                    <td class="border w-1/4 px-4 py-2">{{ $student->name }}</td>
+                                    <td class="border w-1/4 px-4 py-2">{{ $student->email }}</td>
+                                    <td class="border w-1/4 px-4 py-2">{{ strftime('%d/%m/%Y %T', strtotime($student->created_at)) }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
