@@ -13,10 +13,7 @@ class DisciplineController extends Controller
     {
         $disciplines = Discipline::latest()->paginate(10);
 
-        return view(
-            'disciplines.index',
-            compact('disciplines')
-        )->with('i', (request()->input('page', 1) - 1) * 10);;
+        return view('disciplines.index', compact('disciplines'));
     }
 
     public function create()
@@ -37,18 +34,16 @@ class DisciplineController extends Controller
         return redirect('disciplines')->with('success', __('general.discipline_create_success'));;
     }
 
-    public function edit($id)
+    public function edit(Discipline $discipline)
     {
-        $discipline = Discipline::find($id);
         return view('disciplines.edit', compact('discipline'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Discipline $discipline)
     {
         $request->validate([
             'name' => 'required|unique:disciplines|max:255',
         ]);
-        $discipline = Discipline::find($id);
         $discipline->update($request->all());
 
         return redirect()->route('disciplines')->with('success', __('general.discipline_update_success'));
