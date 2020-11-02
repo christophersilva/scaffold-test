@@ -12,17 +12,19 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+                        {{ trans_choice('general.classes', 2) }}
+                    </x-jet-nav-link>
                     @if (Auth::user()->kind == 'teacher')
                         <x-jet-nav-link href="{{ route('students') }}" :active="request()->routeIs('students')">
-                            {{ __('Students') }}
+                            {{ trans_choice('general.students', 2) }}
                         </x-jet-nav-link>
                         <x-jet-nav-link href="{{ route('videos') }}" :active="request()->routeIs('videos')">
-                            {{ __('Videos') }}
+                            {{ trans_choice('general.videos', 2) }}
                         </x-jet-nav-link>
                         <x-jet-nav-link href="{{ route('disciplines') }}" :active="request()->routeIs('disciplines')">
-                            {{ __('Disciplines') }}
+                            {{ trans_choice('general.disciplines', 2) }}
                         </x-jet-nav-link>
-                    @else
                     @endif
                 </div>
             </div>
