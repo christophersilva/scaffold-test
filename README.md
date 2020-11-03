@@ -23,6 +23,7 @@ Differentials
 
 - PHP >= 7.3
 - Mysql 5.7
+- Composer
 
 ## Installation
 
