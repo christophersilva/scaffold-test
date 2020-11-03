@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
-        <div class="flex items-center justify-between">
+        <div class="flex items-center justify-between" style="height:36px;">
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
                 {{ trans_choice('general.students', 2) }}
             </h2>
@@ -29,7 +29,9 @@
                         </tbody>
                     </table>
                 @else
-                    Ainda não há alunos cadastrados
+                    <div class="p-6">
+                        Ainda não há alunos cadastrados
+                    </div>
                 @endif
             </div>
         </div>

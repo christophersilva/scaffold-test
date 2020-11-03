@@ -20,6 +20,7 @@ return [
     'link' => 'Link',
     'summary' => 'Resumo do conteúdo',
     'save' => 'Salvar',
+    'saved' => 'Salvo',
     'discipline_create_success' => 'Disciplina criada com sucesso!',
     'discipline_update_success' => 'Disciplina atualizada com sucesso!',
     'video_create_success' => 'Video criado com sucesso!',
@@ -31,4 +32,7 @@ return [
     'update_profile_information' => 'Atualize seu nome e e-mail',
     'update_password' => 'Atualizar senha',
     'update_password_info' => 'Tenha certeza de estar usando uma senha segura',
+    'photo' => 'Foto',
+    'select_new_photo' => 'Selecione uma nova foto',
+    'remove_photo' => 'Remover Foto',
 ];

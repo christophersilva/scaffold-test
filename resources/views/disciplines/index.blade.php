@@ -39,7 +39,9 @@
                         </tbody>
                     </table>
                 @else
-                    Ainda não há disciplinas cadastradas
+                    <div class="p-6">
+                        Ainda não há disciplinas cadastradas
+                    </div>
                 @endif
             </div>
             <div class="mt-5">

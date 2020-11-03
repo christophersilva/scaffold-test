@@ -43,7 +43,9 @@
                         </tbody>
                     </table>
                 @else
-                    Ainda não há videos cadastrados
+                    <div class="p-6">
+                        Ainda não há videos cadastrados
+                    </div>
                 @endif
             </div>
             <div class="mt-5">
