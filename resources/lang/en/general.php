@@ -25,6 +25,7 @@ return [
     'discipline_update_success' => 'Discipline updated with success!',
     'video_create_success' => 'Video created with success!',
     'video_update_success' => 'Video updated with success!',
+    'video_delete_success' => 'Video deleted with success!',
     'profile' => 'Profile',
     'logout' => 'Logout',
     'manage_account' => 'Manage Account',

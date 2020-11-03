@@ -25,6 +25,7 @@ return [
     'discipline_update_success' => 'Disciplina atualizada com sucesso!',
     'video_create_success' => 'Video criado com sucesso!',
     'video_update_success' => 'Video atualizado com sucesso!',
+    'video_delete_success' => 'Video deletado com sucesso!',
     'profile' => 'Perfil',
     'logout' => 'Sair',
     'manage_account' => 'Gerenciar conta',
