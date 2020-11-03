@@ -29,7 +29,7 @@ Differentials
 First of all you will need to create a database called `scaffold_test`. Then, run in your terminal:
 
 ```bash
-$ git clone https://github.com/christophersilva/scaffolfd-test.git
+$ git clone https://github.com/christophersilva/scaffold-test.git
 $ cd scaffold-test
 $ composer install
 $ php artisan migrate
