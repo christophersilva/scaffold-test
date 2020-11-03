@@ -32,6 +32,7 @@
                             <th class="border w-1/4 px-4 py-2">Disciplina</th>
                             <th class="border w-1/4 px-4 py-2">Criado em</th>
                             <th class="border w-1/4 px-4 py-2">Editar</th>
+                            <th class="border w-1/4 px-4 py-2">Deletar</th>
                         </thead>
                         <tbody>
                             @foreach ($videos as $video)
@@ -41,7 +42,16 @@
                                     <td class="border w-1/4 px-4 py-2">{{ $video->link }}</td>
                                     <td class="border w-1/4 px-4 py-2">{{ $video->discipline->name }}</td>
                                     <td class="border w-1/4 px-4 py-2">{{ strftime('%d/%m/%Y %T', strtotime($video->created_at)) }}</td>
-                                    <td class="border w-1/4 px-4 py-2"><a href="{{ route('edit-video', $video->id) }}">Editar</a></td>
+                                    <td class="border w-1/4 px-4 py-2"><a href="{{ route('edit-video', $video) }}">Editar</a></td>
+                                    <td class="border w-1/4 px-4 py-2">
+                                        <form action="{{ route('delete-video', $video->id) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" title="delete" style="border: none; background-color:transparent;">
+                                                Deletar
+                                            </button>
+                                        </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

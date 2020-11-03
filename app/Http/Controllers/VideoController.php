@@ -59,7 +59,7 @@ class VideoController extends Controller
     {
         $request->validate([
             'name' => 'required|max:255',
-            'link' => 'required|max:255|unique:videos',
+            'link' => 'required|max:255|unique:videos,id,'.$video->id,
             'summary' => 'required|max:255',
             'discipline_id' => 'required',
         ]);
@@ -69,11 +69,10 @@ class VideoController extends Controller
         return redirect()->route('videos')->with('success', __('general.video_update_success'));
     }
 
-    public function destroy($id)
+    public function destroy(Video $video)
     {
-        $video = Video::find($id);
         $video->delete();
 
-
+        return redirect()->route('videos')->with('success', __('general.video_delete_success'));
     }
 }
