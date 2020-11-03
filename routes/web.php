@@ -12,54 +12,27 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::group(['middleware' => ['auth:sanctum', 'verified']], function (){
+    Route::get('/', 'HomeController@index')->name('home');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/', 'HomeController@index')->name('home');
+    Route::get('/students', 'StudentController@index')->name('students')->middleware('can:viewAny,App\Models\Student');
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/classes', function () {
-    return view('classes');
+    Route::group(['prefix' => '/videos'], function(){
+        Route::get('/', 'VideoController@index')->name('videos')->middleware('can:viewAny,App\Models\Video');
+        Route::get('/new', 'VideoController@create')->name('new-video')->middleware('can:create,App\Models\Video');
+        Route::post('/store', 'VideoController@store')->name('create-video')->middleware('can:create,App\Models\Video');
+        Route::get('/{video}/edit', 'VideoController@edit')->name('edit-video')->middleware('can:update,video');
+        Route::put('/{video}', 'VideoController@update')->name('update-video')->middleware('can:update,video');    
+        Route::delete('/{video}', 'VideoController@destroy')->name('delete-video')->middleware('can:delete,video');
+    });
+
+    Route::group(['prefix' => '/disciplines'], function(){
+        Route::get('/', 'DisciplineController@index')->name('disciplines')->middleware('can:viewAny,App\Models\Discipline');
+        Route::get('/new', 'DisciplineController@create')->name('new-discipline')->middleware('can:create,App\Models\Discipline');
+        Route::post('/store', 'DisciplineController@store')->name('create-discipline')->middleware('can:create,App\Models\Discipline');
+        Route::get('/{discipline}/edit', 'DisciplineController@edit')->name('edit-discipline')->middleware('can:update,discipline');
+        Route::put('/{discipline}', 'DisciplineController@update')->name('update-discipline')->middleware('can:update,discipline');
+    });
 });
 
-Route::middleware(['auth:sanctum', 'verified', 'can:viewAny,App\Models\Student'])
-    ->get('/students', 'StudentController@index')
-    ->name('students');
 
-Route::middleware(['auth:sanctum', 'verified', 'can:viewAny,App\Models\Video'])
-    ->get('/videos', 'VideoController@index')
-    ->name('videos');
-
-Route::middleware(['auth:sanctum', 'verified', 'can:create,App\Models\Video'])
-    ->get('/videos/new', 'VideoController@create')
-    ->name('new-video');
-
-Route::middleware(['auth:sanctum', 'verified', 'can:create,App\Models\Video'])
-    ->post('/videos/store', 'VideoController@store')
-    ->name('create-video');
-
-Route::middleware(['auth:sanctum', 'verified', 'can:update,video'])
-    ->get('/video/{video}/edit', 'VideoController@edit')
-    ->name('edit-video');
-
-Route::middleware(['auth:sanctum', 'verified', 'can:update,video'])
-    ->put('/video/{video}', 'VideoController@update')
-    ->name('update-video');
-
-
-Route::middleware(['auth:sanctum', 'verified', 'can:viewAny,App\Models\Discipline'])
-    ->get('/disciplines', 'DisciplineController@index')
-    ->name('disciplines');
-
-Route::middleware(['auth:sanctum', 'verified', 'can:create,App\Models\Discipline'])
-    ->get('/disciplines/new', 'DisciplineController@create')
-    ->name('new-discipline');
-
-Route::middleware(['auth:sanctum', 'verified', 'can:create,App\Models\Discipline'])
-    ->post('/disciplines/store', 'DisciplineController@store')
-    ->name('create-discipline');
-
-Route::middleware(['auth:sanctum', 'verified', 'can:update,discipline'])
-    ->get('/disciplines/{discipline}/edit', 'DisciplineController@edit')
-    ->name('edit-discipline');
-
-Route::middleware(['auth:sanctum', 'verified', 'can:update,discipline'])
-    ->put('/disciplines/{discipline}', 'DisciplineController@update')
-    ->name('update-discipline');
