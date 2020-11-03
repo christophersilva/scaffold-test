@@ -7,6 +7,8 @@ return [
     'already_registered' => 'Já é cadastrado?',
     'forgot_password' => 'Esqueceu sua senha?',
     'confirm_password' => 'Confirmar senha',
+    'current_password' => 'Senha atual',
+    'new_password' => 'Nova senha',
     'register' => 'Cadastrar',
     'login' => 'Entrar',
     'videos' => 'Video|Videos',
@@ -25,4 +27,8 @@ return [
     'profile' => 'Perfil',
     'logout' => 'Sair',
     'manage_account' => 'Gerenciar conta',
+    'profile_information' => 'Informações de perfil',
+    'update_profile_information' => 'Atualize seu nome e e-mail',
+    'update_password' => 'Atualizar senha',
+    'update_password_info' => 'Tenha certeza de estar usando uma senha segura',
 ];
